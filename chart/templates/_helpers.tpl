@@ -41,3 +41,11 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "huna.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "huna.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
