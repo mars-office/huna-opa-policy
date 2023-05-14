@@ -45,7 +45,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "huna.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "huna.name" . }}
+{{- define "huna-opa-policy.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "huna-opa-policy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
