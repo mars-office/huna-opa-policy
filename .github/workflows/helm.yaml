@@ -1,4 +1,4 @@
-name: 'Helm build and push'
+name: 'Docker/Helm build and push'
 
 run-name: '0.0.${{ github.run_number }} - ${{ github.workflow }}'
 
