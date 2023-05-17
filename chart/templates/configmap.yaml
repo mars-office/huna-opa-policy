@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: opa-policy
+  name: {{ include "huna-opa-policy.fullname" . }}
   labels:
     {{- include "huna-opa-policy.labels" . | nindent 4 }}
 data:
