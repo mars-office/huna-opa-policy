@@ -1,6 +1,0 @@
-{
-  "opa.roots": [
-    "${workspaceFolder}/chart/policy"
-  ],
-  "opa.strictMode": true
-}
