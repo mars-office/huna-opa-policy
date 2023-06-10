@@ -1,3 +1,10 @@
 {
-  "test": "test"
+  "headers": {
+    "accept": "*/*",
+    "host": "10.42.0.38:3000",
+    "user-agent": "kube-probe/1.26"
+  },
+  "method": "GET",
+  "remoteAddress": "10.42.0.38",
+  "url": "/api/user-preferences/health"
 }

@@ -2,7 +2,8 @@ package com.huna
 
 default allow = false
 
+# Is healthcheck URL?
 allow {
-    input.test == "test"
-    data.test2 == "test2"
+    regex.match("/api/[\\w-]+/health", input.url)
 }
+
