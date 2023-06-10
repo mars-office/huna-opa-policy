@@ -6,7 +6,6 @@ RUN curl -L -o opa https://openpolicyagent.org/downloads/v0.53.1/opa_linux_amd64
 RUN chmod +x ./opa
 RUN mv /opa /bin/opa
 COPY ./chart/policy/ /policy/
-COPY ./data.json /data.json
 COPY ./input.json /input.json
 RUN opa test /policy
 RUN opa eval --bundle /policy --input /input.json --format pretty 'data'
