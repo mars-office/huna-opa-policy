@@ -10,8 +10,6 @@ allow {
 # Is user logged in?
 allow {
     input.headers.authorization
-    headerParts = split(input.headers.authorization, " ")
-    count(headerParts) == 2
-    token := headerParts[1]
+    token := split(input.headers.authorization, " ")[1]
     validateJwt(token)
 }

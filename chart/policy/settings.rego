@@ -2,7 +2,6 @@ package com.huna
 
 default env = "local"
 
-env = e {
+env = opa.runtime()["env"]["HUNA_ENVIRONMENT"] {
   opa.runtime()["env"]["HUNA_ENVIRONMENT"]
-  e := opa.runtime()["env"]["HUNA_ENVIRONMENT"]
 }
