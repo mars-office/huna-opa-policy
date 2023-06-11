@@ -9,7 +9,5 @@ allow {
 
 # Is user logged in?
 allow {
-    input.headers.authorization
-    token := split(input.headers.authorization, " ")[1]
-    validateJwt(token)
+    getLoggedInUser
 }

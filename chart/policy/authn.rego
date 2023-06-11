@@ -36,3 +36,9 @@ validateJwt(token) := claims {
   io.jwt.verify_rs256(token, jwks)
   claims := tempClaims
 }
+
+getLoggedInUser := user {
+    input.headers.authorization
+    token := split(input.headers.authorization, " ")[1]
+    user := validateJwt(token)
+}
