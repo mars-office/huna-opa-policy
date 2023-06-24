@@ -1,4 +1,4 @@
-package com.huna
+package com.huna.tests
 
 test_allow_healthcheck {
     data.com.huna.allow with input as {"url": "/api/user-preferences/health"}
