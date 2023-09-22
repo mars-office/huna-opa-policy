@@ -19,8 +19,8 @@ jobs:
     with:
       version: 'v0.0.${{ github.run_number }}'
       platforms: 'linux/amd64'
-  snyk:
-    uses: mars-office/.github/.github/workflows/snyk.yaml@main
+  snyk_container:
+    uses: mars-office/.github/.github/workflows/snyk_container.yaml@main
     permissions:
       contents: read
       security-events: write
