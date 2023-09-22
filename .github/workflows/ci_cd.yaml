@@ -19,14 +19,4 @@ jobs:
     with:
       version: 'v0.0.${{ github.run_number }}'
       platforms: 'linux/amd64'
-  snyk_container:
-    uses: mars-office/.github/.github/workflows/snyk_container.yaml@main
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-      packages: read
-    secrets: inherit
-    needs: [docker_build_push]
-    with:
-      version: 'v0.0.${{ github.run_number }}'
+      pushDisabled: true
