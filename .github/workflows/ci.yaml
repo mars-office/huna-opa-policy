@@ -17,7 +17,7 @@ jobs:
     uses: mars-office/.github/.github/workflows/ci.yaml@main
     secrets: inherit
     with:
-      version: 'v0.0.${{ github.run_number }}'
+      version: '0.0.${{ github.run_number }}'
       dockerBuildPlatforms: 'linux/amd64'
       dockerPushDisabled: true
       helmBuildAndPushDisabled: true
