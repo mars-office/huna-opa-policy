@@ -1,4 +1,4 @@
-name: 'CI/CD'
+name: 'CI'
 
 run-name: '0.0.${{ github.run_number }} - ${{ github.workflow }}'
 
@@ -13,10 +13,11 @@ on:
     branches:
       - main
 jobs:
-  docker_build_push:
-    uses: mars-office/.github/.github/workflows/docker.yaml@main
+  ci:
+    uses: mars-office/.github/.github/workflows/ci.yaml@main
     secrets: inherit
     with:
       version: 'v0.0.${{ github.run_number }}'
-      platforms: 'linux/amd64'
-      pushDisabled: true
+      dockerBuildPlatforms: 'linux/amd64'
+      dockerPushDisabled: true
+      helmBuildAndPushDisabled: true
