@@ -26,3 +26,4 @@ jobs:
       dockerBuildPlatforms: 'linux/amd64'
       dockerPushDisabled: true
       helmBuildAndPushDisabled: true
+      codeScanDisabled: true
