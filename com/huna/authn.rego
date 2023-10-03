@@ -8,7 +8,7 @@ insecureTls {
 
 # Cache response for 24 hours
 
-idpJwksKeyset(jwksUrl) := http.send({
+idpJwksKeyset(jwksUrl) = http.send({
 	"url": jwksUrl,
 	"method": "GET",
 	"tls_insecure_skip_verify": insecureTls,
@@ -19,7 +19,7 @@ idpJwksKeyset(jwksUrl) := http.send({
 
 # Cache response for an hour
 
-validateJwt(token) := claims {
+validateJwt(token) = claims {
 	decoded := io.jwt.decode(token)
 	headers := decoded[0]
 	tempClaims := decoded[1]
