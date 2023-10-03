@@ -34,7 +34,7 @@ validateJwt(token) := claims {
 	tempClaims := decoded[1]
 
 	# signature check
-	metadata := idpMetadata(tempClaims.iss)
+	metadata := idpMetadata("http://huna-dex.huna:5556")
 	jwks_endpoint := concat("", [metadata.jwks_uri, "?", urlquery.encode_object({"kid": headers.kid})])
 	jwks := idpJwksKeyset(jwks_endpoint)
 	io.jwt.verify_rs256(token, jwks)
