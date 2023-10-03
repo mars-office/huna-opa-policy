@@ -25,7 +25,7 @@ validateJwt(token) := claims {
 	tempClaims := decoded[1]
 
 	# signature check
-	jwks_endpoint := concat("", ["http://huna-dex.huna:5556/keys", "?", urlquery.encode_object({"kid": headers.kid})])
+	jwks_endpoint := concat("", ["http://huna-dex:5556/keys", "?", urlquery.encode_object({"kid": headers.kid})])
 	jwks := idpJwksKeyset(jwks_endpoint)
 	io.jwt.verify_rs256(token, jwks)
 	claims := tempClaims
