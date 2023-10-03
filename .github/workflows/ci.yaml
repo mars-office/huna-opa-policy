@@ -26,5 +26,6 @@ jobs:
       version: '0.0.${{ github.run_number }}'
       dockerBuildPlatforms: 'linux/amd64'
       dockerPushDisabled: true
+      dockerScanDisabled: true
       helmBuildAndPushDisabled: true
       codeScanDisabled: true
