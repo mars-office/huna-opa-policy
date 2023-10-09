@@ -33,7 +33,7 @@ validateJwt(token) = claims {
 	claims := tempClaims
 }
 
-loggedInUser = user {
+loggedInUser := user {
 	input.headers.authorization
 	token := split(input.headers.authorization, " ")[1]
 	user := validateJwt(token)
