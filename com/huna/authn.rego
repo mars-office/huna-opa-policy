@@ -1,5 +1,7 @@
 package com.huna
 
+import data.com.huna.env
+
 default insecureTls = false
 
 insecureTls {
@@ -31,7 +33,7 @@ validateJwt(token) = claims {
 	claims := tempClaims
 }
 
-getLoggedInUser := user {
+loggedInUser = user {
 	input.headers.authorization
 	token := split(input.headers.authorization, " ")[1]
 	user := validateJwt(token)
