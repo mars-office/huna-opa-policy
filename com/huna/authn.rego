@@ -25,11 +25,15 @@ validateJwt(token) = claims {
 	decoded := io.jwt.decode(token)
 	headers := decoded[0]
 	tempClaims := decoded[1]
+	tempClaims.iss == concat("", ["https://dex.", env, ".huna2.com"])
+	nowSec := ((time.now_ns() / 1000) / 1000) / 1000
+	tempClaims.exp > nowSec
 
 	# signature check
 	jwks_endpoint := concat("", ["http://huna-dex:5556/keys", "?", urlquery.encode_object({"kid": headers.kid})])
 	jwks := idpJwksKeyset(jwks_endpoint)
 	io.jwt.verify_rs256(token, jwks)
+
 	claims := tempClaims
 }
 
