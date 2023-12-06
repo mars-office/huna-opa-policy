@@ -27,5 +27,5 @@
   },
   "method": "GET",
   "remoteAddress": "10.42.0.30",
-  "url": "/api/user-preferences/user-preferences"
+  "url": "/api/user-preferences/health"
 }
