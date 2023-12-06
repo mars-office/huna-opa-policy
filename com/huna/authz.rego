@@ -18,13 +18,6 @@ user = x {
 	x := loggedInUser
 }
 
-is_admin = x {
-	not loggedInUser
-	x:=false
-}
-
-is_admin = x {
-	loggedInUser
+is_admin = {
 	loggedInUser.email == adminEmails[_]
-	x:=true
 }
