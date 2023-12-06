@@ -1,6 +1,5 @@
-package com.huna
-
-import data.com.huna.loggedInUser
+package com.huna.authz
+import data.com.huna.functions.loggedInUser
 
 default allow = false
 
@@ -12,4 +11,8 @@ allow {
 # Is user logged in?
 allow {
 	loggedInUser
+}
+
+user = x {
+	x := loggedInUser
 }

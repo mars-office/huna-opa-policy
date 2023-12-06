@@ -1,6 +1,5 @@
-package com.huna
-
-import data.com.huna.env
+package com.huna.functions
+import data.com.huna.settings.env
 
 default insecureTls = false
 

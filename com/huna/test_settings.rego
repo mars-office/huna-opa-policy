@@ -1,5 +1,5 @@
-package com.huna
+package com.huna.tests
 
 test_env {
-    data.com.huna.env == "local"
+    data.com.huna.settings.env == "local"
 }
