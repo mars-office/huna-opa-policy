@@ -10,7 +10,14 @@ allow {
 
 # Is user logged in?
 allow {
+	not contains(lower(input.url), "/admin/")
 	loggedInUser
+}
+
+allow {
+	contains(lower(input.url), "/admin/")
+	loggedInUser
+	is_admin
 }
 
 user = x {
@@ -18,7 +25,5 @@ user = x {
 }
 
 is_admin {
-	loggedInUser
-	loggedInUser.email
 	loggedInUser.email == data.dataset.adminEmails[_]
 }
