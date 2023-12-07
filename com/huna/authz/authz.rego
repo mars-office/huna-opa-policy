@@ -20,5 +20,5 @@ user = x {
 is_admin {
 	loggedInUser
 	loggedInUser.email
-	loggedInUser.email = data.adminEmails[_]
+	loggedInUser.email == data.dataset.adminEmails[_]
 }
