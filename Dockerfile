@@ -7,4 +7,5 @@ RUN chmod +x ./opa
 RUN mv /opa /bin/opa
 COPY ./com/ /policy/com/
 RUN opa test /policy
+RUN opa build /policy --ignore=".*"
 LABEL org.opencontainers.image.source=https://github.com/mars-office/huna-opa-policy
