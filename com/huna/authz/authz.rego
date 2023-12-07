@@ -17,8 +17,8 @@ user = x {
 	x := loggedInUser
 }
 
-is_admin = {
+is_admin {
 	loggedInUser
-	loggedInUser["email"]
-	loggedInUser["email"] = data.adminEmails[_]
+	loggedInUser.email
+	loggedInUser.email = data.adminEmails[_]
 }
