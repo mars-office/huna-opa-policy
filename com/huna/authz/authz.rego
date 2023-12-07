@@ -19,5 +19,7 @@ user = x {
 }
 
 is_admin = {
-	loggedInUser.email == adminEmails[_]
+	loggedInUser
+	loggedInUser["email"]
+	loggedInUser["email"] = adminEmails[_]
 }
