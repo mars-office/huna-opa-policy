@@ -1,6 +1,5 @@
 package com.huna.authz
 import data.com.huna.functions.loggedInUser
-import data.com.huna.constants.adminEmails
 
 default allow = false
 
@@ -21,5 +20,5 @@ user = x {
 is_admin = {
 	loggedInUser
 	loggedInUser["email"]
-	loggedInUser["email"] = adminEmails[_]
+	loggedInUser["email"] = data.adminEmails[_]
 }
