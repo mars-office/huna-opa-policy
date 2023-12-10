@@ -8,6 +8,11 @@ allow {
 	regex.match("/api/[\\w-]+/health$", input.url)
 }
 
+# Is ota URL?
+allow {
+	regex.match("/api/ota/[\\w-]+$", input.url)
+}
+
 # Is user logged in?
 allow {
 	not contains(lower(input.url), "/admin/")
