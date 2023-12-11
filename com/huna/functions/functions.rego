@@ -41,3 +41,14 @@ loggedInUser := user {
 	token := split(input.headers.authorization, " ")[1]
 	user := validateJwt(token)
 }
+
+valid_mtls_certificate {
+	input.headers["ssl-client-cert"]
+	decodedClientCrt := urlquery.decode(input.headers["ssl-client-cert"])
+  mergedCerts := concat("\n", [data.interimcacrt, data.cacrt,  decodedClientCrt])
+  certs := crypto.x509.parse_certificates(mergedCerts)
+  certs[0].Issuer.Organization[0] == "Huna"
+  certs[1].Issuer.Organization[0] == "Huna"
+  certs[2].Issuer.Organization[0] == "Huna"
+  certs[2].Issuer.CommonName = certs[1].Subject.CommonName
+}

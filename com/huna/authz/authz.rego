@@ -1,5 +1,6 @@
 package com.huna.authz
 import data.com.huna.functions.loggedInUser
+import data.com.huna.functions.valid_mtls_certificate
 
 default allow = false
 
@@ -11,6 +12,7 @@ allow {
 # Is ota URL?
 allow {
 	regex.match("/api/ota/[\\w-]+$", input.url)
+	valid_mtls_certificate
 }
 
 # Is user logged in?
