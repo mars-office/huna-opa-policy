@@ -15,22 +15,46 @@ allow {
 	valid_mtls_certificate
 }
 
+# Is detection URL?
+allow {
+	regex.match("/api/detection/[\\w-]+$", input.url)
+	valid_mtls_certificate
+}
+
 # Is user logged in?
 allow {
+    not regex.match("/api/ota/[\\w-]+$", input.url)
+	not regex.match("/api/detection/[\\w-]+$", input.url)
 	not contains(lower(input.url), "/admin/")
 	loggedInUser
 }
 
 allow {
+    not regex.match("/api/ota/[\\w-]+$", input.url)
+	not regex.match("/api/detection/[\\w-]+$", input.url)
 	contains(lower(input.url), "/admin/")
 	loggedInUser
 	is_admin
 }
 
-user = x {
+user := x {
+    not regex.match("/api/ota/[\\w-]+$", input.url)
+	not regex.match("/api/detection/[\\w-]+$", input.url)
 	x := loggedInUser
 }
 
+user := x {
+    regex.match("/api/ota/[\\w-]+$", input.url)
+	x := valid_mtls_certificate
+}
+
+user := x {
+    regex.match("/api/detection/[\\w-]+$", input.url)
+	x := valid_mtls_certificate
+}
+
 is_admin {
+    not regex.match("/api/detection/[\\w-]+$", input.url)
+	not regex.match("/api/ota/[\\w-]+$", input.url)
 	loggedInUser.email == data.dataset.adminEmails[_]
 }
