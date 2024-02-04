@@ -1,5 +1,4 @@
 package com.huna.functions.oauth
-import data.com.huna.vars.env
 
 default insecure_tls = false
 default env = "local"
