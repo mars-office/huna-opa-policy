@@ -2,6 +2,11 @@ package com.huna.functions.oauth
 import data.com.huna.vars.env
 
 default insecure_tls = false
+default env = "local"
+
+env = opa.runtime()["env"]["HUNA_ENVIRONMENT"] {
+  opa.runtime()["env"]["HUNA_ENVIRONMENT"]
+}
 
 insecure_tls {
 	env == "local"
