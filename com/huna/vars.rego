@@ -1,4 +1,4 @@
-package com.huna.settings
+package com.huna.vars
 
 default env = "local"
 
