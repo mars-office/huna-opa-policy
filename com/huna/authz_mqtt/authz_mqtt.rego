@@ -23,5 +23,11 @@ allow := "allow" {
 }
 
 allow := "allow" {
+  input.action == "publish"
   input.topic == concat("/", ["status", input.username])
+}
+
+allow := "allow" {
+  input.action == "subscribe"
+  input.topic == concat("/", ["commands", input.username])
 }
