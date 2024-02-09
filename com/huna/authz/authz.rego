@@ -44,13 +44,3 @@ allow := x {
   input.type == "mqtt"
   x:=authz_mqtt.allow
 }
-
-user := x {
-  input.type == "mqtt"
-  x:=authz_mqtt.user
-}
-
-is_admin := x {
-  input.type == "mqtt"
-  x:=authz_mqtt.is_admin
-}
