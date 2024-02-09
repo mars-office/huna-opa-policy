@@ -5,5 +5,6 @@ decode_and_validate_client_certificate() := decoded {
   decoded_client_cert := urlquery.decode(input.headers["ssl-client-cert"])
   merged_certs := concat("\n", [opa.runtime()["env"]["ROOT_CA_CRT"], opa.runtime()["env"]["IOT_CA_CRT"],  decoded_client_cert])
   certs := crypto.x509.parse_and_verify_certificates(merged_certs)
-  decoded:={"sub": certs[2].Subject.CommonName}
+  certs[0]
+  decoded:={"sub": certs[1][2].Subject.CommonName}
 }
