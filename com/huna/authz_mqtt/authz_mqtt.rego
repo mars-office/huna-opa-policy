@@ -21,13 +21,3 @@ allow := "allow" {
 allow := "allow" {
   input.username == "huna-mqtt-client"
 }
-
-allow := "allow" {
-  input.action == "publish"
-  input.topic == concat("/", ["status", input.username])
-}
-
-allow := "allow" {
-  input.action == "subscribe"
-  input.topic == concat("/", ["commands", input.username])
-}
