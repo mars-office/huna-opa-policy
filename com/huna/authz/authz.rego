@@ -1,5 +1,4 @@
 package com.huna.authz
-import data.com.huna.authz_mqtt
 import data.com.huna.authz_oauth
 
 
@@ -20,9 +19,4 @@ user := x {
 is_admin := x {
   input.type == "oauth"
   x:=authz_oauth.is_admin
-}
-
-allow := x {
-  input.type == "mqtt"
-  x:=authz_mqtt.allow
 }
