@@ -7,6 +7,16 @@ env = opa.runtime()["env"]["HUNA_ENVIRONMENT"] {
   opa.runtime()["env"]["HUNA_ENVIRONMENT"]
 }
 
+issuerUrl = x {
+	not env == "prod"
+	x := concat("", ["https://idp.", env, ".huna2.com"])
+}
+
+issuerUrl = x {
+	env == "prod"
+	x := "https://idp.huna2.com"
+}
+
 insecure_tls {
 	env == "local"
 }
@@ -24,7 +34,7 @@ decode_and_validate_jwt(token) = claims {
 	decoded := io.jwt.decode(token)
 	headers := decoded[0]
 	temp_claims := decoded[1]
-	temp_claims.iss == concat("", ["https://idp.", env, ".huna2.com"])
+	temp_claims.iss == issuerUrl
 	now_sec := time.now_ns() / 1000000000
 	temp_claims.exp > now_sec
 	jwks_endpoint := concat("", ["http://huna-idp/keys", "?", urlquery.encode_object({"kid": headers.kid})])
